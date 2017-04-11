@@ -1,0 +1,41 @@
+//
+//  XiChe.pch
+//  XiChe
+//
+//  Created by LiuFeifei on 17/4/2.
+//  Copyright © 2017年 LiuJie. All rights reserved.
+//
+
+#ifndef XiChe_pch
+#define XiChe_pch
+
+#import <UIKit/UIKit.h>
+
+#import "GlobalAppearance.h"
+#import "GlobalSize.h"
+#import "Defines.h"
+
+#import "ServerEnvironmentConstants.h"
+#import "Singleton.h"
+#import "Category.h"
+
+#import "IQKeyboardManager.h"
+#import "Masonry.h"
+#import "MBProgressHUD.h"
+
+#import "GlobalManager.h"
+#import "ControllersManager.h"
+#import "NetAPIManager.h"
+
+#import "StringConstants.h"
+#import "APIUrlConstants.h"
+
+#import "TKValue.h"
+#import "CustomFont.h"
+#import "CustomButton.h"
+
+#import "BaseModel.h"
+#import "BaseDto.h"
+#import "CurrentUser.h"
+
+#endif /* XiChe_pch */
