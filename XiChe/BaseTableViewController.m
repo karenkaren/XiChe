@@ -25,19 +25,28 @@
 
 - (void)createTableViewWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
-    if (!self.tableView) {
-        self.tableView = [[UITableView alloc] initWithFrame:frame style:style];
-    }
+    [self.tableView removeFromSuperview];
+    self.tableView = nil;
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:style];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
+}
+
+- (void)createTableViewWithStyle:(UITableViewStyle)style
+{
+    [self.tableView removeFromSuperview];
+    self.tableView = nil;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight - kStatusBarHeight) style:style];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self createTableViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight - kStatusBarHeight) style:UITableViewStylePlain];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [self.view addSubview:self.tableView];
+    [self createTableViewWithStyle:UITableViewStylePlain];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -16,5 +16,6 @@
 
 @property (nonatomic) UITableView * tableView;
 - (void)createTableViewWithFrame:(CGRect)frame style:(UITableViewStyle)style;
+- (void)createTableViewWithStyle:(UITableViewStyle)style;
 
 @end

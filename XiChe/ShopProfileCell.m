@@ -150,7 +150,7 @@
     _shopProfile = shopProfile;
     self.shopImageView.image = shopProfile.shopImage;
     self.shopNameLabel.text = shopProfile.shopName;
-    self.starsView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0 green:arc4random_uniform(255) / 255.0 blue:arc4random_uniform(255) / 255.0 alpha:arc4random_uniform(10) / 10.0];
+    self.starsView.backgroundColor = kRandomColor;
     self.shopAddressLabel.text = shopProfile.shopAddress;
     self.washingCountLabel.text = [NSString stringWithFormat:@"正在洗车数:%ld个", shopProfile.washingCount];
     self.queueingCountLabel.text = [NSString stringWithFormat:@"排队人数:%ld个", shopProfile.queueingCount];

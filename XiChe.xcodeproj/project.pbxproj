@@ -23,6 +23,7 @@
 		E13DB8E31E910BC600171B7D /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DB8E21E910BC600171B7D /* BaseTableViewController.m */; };
 		E14607AE1E9C7B3100BDCADE /* MeRootHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E14607AD1E9C7B3100BDCADE /* MeRootHeaderView.m */; };
 		E14607B11E9CA9F100BDCADE /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E14607B01E9CA9F100BDCADE /* AccountView.m */; };
+		E14607B41E9E203300BDCADE /* MyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E14607B31E9E203300BDCADE /* MyOrderCell.m */; };
 		E1CAB7841E90AA8F00D3F6FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CAB7831E90AA8F00D3F6FC /* main.m */; };
 		E1CAB7871E90AA8F00D3F6FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CAB7861E90AA8F00D3F6FC /* AppDelegate.m */; };
 		E1CAB78F1E90AA8F00D3F6FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CAB78E1E90AA8F00D3F6FC /* Assets.xcassets */; };
@@ -146,6 +147,8 @@
 		E14607AD1E9C7B3100BDCADE /* MeRootHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeRootHeaderView.m; sourceTree = "<group>"; };
 		E14607AF1E9CA9F100BDCADE /* AccountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountView.h; sourceTree = "<group>"; };
 		E14607B01E9CA9F100BDCADE /* AccountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountView.m; sourceTree = "<group>"; };
+		E14607B21E9E203300BDCADE /* MyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderCell.h; sourceTree = "<group>"; };
+		E14607B31E9E203300BDCADE /* MyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderCell.m; sourceTree = "<group>"; };
 		E1CAB77F1E90AA8F00D3F6FC /* XiChe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiChe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CAB7831E90AA8F00D3F6FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1CAB7851E90AA8F00D3F6FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -537,6 +540,8 @@
 				E14607AD1E9C7B3100BDCADE /* MeRootHeaderView.m */,
 				E14607AF1E9CA9F100BDCADE /* AccountView.h */,
 				E14607B01E9CA9F100BDCADE /* AccountView.m */,
+				E14607B21E9E203300BDCADE /* MyOrderCell.h */,
+				E14607B31E9E203300BDCADE /* MyOrderCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1343,6 +1348,7 @@
 				E1CAB8571E90ABAE00D3F6FC /* JSActions.m in Sources */,
 				E1CAB8591E90ABAE00D3F6FC /* UINavigationController+PresentTransition.m in Sources */,
 				E1CAB8631E90ABAE00D3F6FC /* CustomTextField.m in Sources */,
+				E14607B41E9E203300BDCADE /* MyOrderCell.m in Sources */,
 				E1CAB7841E90AA8F00D3F6FC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
