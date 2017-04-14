@@ -75,13 +75,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XiChe/BaseTableViewController.m"
-            timestampString = "513844165.380327"
+            filePath = "XiChe/Mine/Root/MeRootController.m"
+            timestampString = "513849124.499814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-myOrderCell:dataIndex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

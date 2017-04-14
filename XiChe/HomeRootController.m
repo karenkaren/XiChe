@@ -7,8 +7,13 @@
 //
 
 #import "HomeRootController.h"
+#import "HomeRootHeaderView.h"
+#import "ShopProfileCell.h"
 
 @interface HomeRootController ()
+
+@property (nonatomic, strong) HomeRootHeaderView * homeRootHeaderView;
+@property (nonatomic, strong) ShopProfileModel * shopProfile;
 
 @end
 
@@ -18,21 +23,43 @@
     [super viewDidLoad];
     
     self.title = @"首页";
+    
+    self.homeRootHeaderView = [[HomeRootHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
+    self.tableView.tableHeaderView = self.homeRootHeaderView;
+    
+    [self.tableView registerClass:[ShopProfileCell class] forCellReuseIdentifier:@"Cell"];
+    
+    kWeakSelf
+    [ShopProfileModel getShopList:nil block:^(id response, NSArray *shopList, NSError *error) {
+        if (!error) {
+            kStrongSelf
+            strongSelf.shopProfile = shopList.firstObject;
+            [strongSelf.tableView reloadData];
+        }
+    }];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger number = self.shopProfile ? 1 : 0;
+    return number;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ShopProfileCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.shopProfile = self.shopProfile;
+    
+    return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    ShopProfileCell * cell = (ShopProfileCell *)[tableView cellForRowAtIndexPath:indexPath];
+    //    return [cell getAutoCellHeight];
+    return 200;
+}
 
 @end

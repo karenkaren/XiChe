@@ -40,9 +40,11 @@
     self.tableView.tableHeaderView = self.tableHeaderView;
 //    [self.view layoutIfNeeded];
     
+    kWeakSelf
     self.tableHeaderView.myCarClickBlock = ^(UIButton * button) {
         DLog(@"我的爱车");
-        [self showMyCar];
+        kStrongSelf
+        [strongSelf showMyCar];
     };
     
     self.originalDatas = @[@[@"待确认", @"待服务", @"待评价", @"已完成"], @[@"洗车券", @"账户设置"]];
@@ -100,7 +102,7 @@
 
 - (void)myOrderCell:(MyOrderCell *)myOrderCell dataIndex:(NSInteger)dataIndex
 {
-    
+    DLog(@"%ld", dataIndex);
 }
 
 @end

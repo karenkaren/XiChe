@@ -12,6 +12,9 @@
 		E1159DB01EA07343001EBE61 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DAF1EA07343001EBE61 /* CarModel.m */; };
 		E1159DB31EA07453001EBE61 /* CarListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DB21EA07453001EBE61 /* CarListController.m */; };
 		E1159DB61EA097B9001EBE61 /* CarGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DB51EA097B9001EBE61 /* CarGroupModel.m */; };
+		E1159DB91EA0BB12001EBE61 /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DB81EA0BB12001EBE61 /* BannerView.m */; };
+		E1159DBC1EA0BB84001EBE61 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DBB1EA0BB84001EBE61 /* BannerModel.m */; };
+		E1159DBF1EA0CCE3001EBE61 /* HomeRootHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DBE1EA0CCE3001EBE61 /* HomeRootHeaderView.m */; };
 		E12944681E94DF51005E8746 /* RetrieveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12944671E94DF51005E8746 /* RetrieveModel.m */; };
 		E129446C1E94E017005E8746 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E129446B1E94E017005E8746 /* LoginModel.m */; };
 		E12944701E94E0E7005E8746 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E129446F1E94E0E7005E8746 /* RegisterModel.m */; };
@@ -128,6 +131,12 @@
 		E1159DB21EA07453001EBE61 /* CarListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarListController.m; sourceTree = "<group>"; };
 		E1159DB41EA097B9001EBE61 /* CarGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarGroupModel.h; sourceTree = "<group>"; };
 		E1159DB51EA097B9001EBE61 /* CarGroupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarGroupModel.m; sourceTree = "<group>"; };
+		E1159DB71EA0BB12001EBE61 /* BannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerView.h; sourceTree = "<group>"; };
+		E1159DB81EA0BB12001EBE61 /* BannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerView.m; sourceTree = "<group>"; };
+		E1159DBA1EA0BB84001EBE61 /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
+		E1159DBB1EA0BB84001EBE61 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
+		E1159DBD1EA0CCE3001EBE61 /* HomeRootHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRootHeaderView.h; sourceTree = "<group>"; };
+		E1159DBE1EA0CCE3001EBE61 /* HomeRootHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRootHeaderView.m; sourceTree = "<group>"; };
 		E12944661E94DF51005E8746 /* RetrieveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveModel.h; sourceTree = "<group>"; };
 		E12944671E94DF51005E8746 /* RetrieveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveModel.m; sourceTree = "<group>"; };
 		E129446A1E94E017005E8746 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
@@ -530,6 +539,10 @@
 		E13DB8DE1E910B0000171B7D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1159DB71EA0BB12001EBE61 /* BannerView.h */,
+				E1159DB81EA0BB12001EBE61 /* BannerView.m */,
+				E1159DBD1EA0CCE3001EBE61 /* HomeRootHeaderView.h */,
+				E1159DBE1EA0CCE3001EBE61 /* HomeRootHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -537,6 +550,8 @@
 		E13DB8DF1E910B0600171B7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1159DBA1EA0BB84001EBE61 /* BannerModel.h */,
+				E1159DBB1EA0BB84001EBE61 /* BannerModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1351,6 +1366,7 @@
 				E1CAB7CC1E90AB5200D3F6FC /* UIViewController+NetworkTips.m in Sources */,
 				E13DB8D11E90B32700171B7D /* ShareSnsUtils.m in Sources */,
 				E129446C1E94E017005E8746 /* LoginModel.m in Sources */,
+				E1159DBC1EA0BB84001EBE61 /* BannerModel.m in Sources */,
 				E1CAB8AC1E90ABF100D3F6FC /* UserLoginController.m in Sources */,
 				E1CAB8611E90ABAE00D3F6FC /* TableViewDevider.m in Sources */,
 				E14607AE1E9C7B3100BDCADE /* MeRootHeaderView.m in Sources */,
@@ -1359,6 +1375,8 @@
 				E1CAB8641E90ABAE00D3F6FC /* InsetsLabel.m in Sources */,
 				E1CAB8581E90ABAE00D3F6FC /* PresentTransition.m in Sources */,
 				E1CAB8AF1E90ABF100D3F6FC /* AgreeView.m in Sources */,
+				E1159DBF1EA0CCE3001EBE61 /* HomeRootHeaderView.m in Sources */,
+				E1159DB91EA0BB12001EBE61 /* BannerView.m in Sources */,
 				E1CAB8B71E90ABF100D3F6FC /* PlaceHolderTextView.m in Sources */,
 				E1CAB8431E90ABAE00D3F6FC /* NSString+Attributes.m in Sources */,
 				E13DB8DC1E90B48100171B7D /* HomeRootController.m in Sources */,

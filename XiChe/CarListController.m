@@ -24,7 +24,7 @@
     self.title = @"请选择品牌";
     self.originalData = [CarGroupModel getCarGroupList];
     
-//    [self createTableViewWithStyle:UITableViewStyleGrouped];
+    self.tableView.height += kTabBarHeight;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CarCell"];
 }
 

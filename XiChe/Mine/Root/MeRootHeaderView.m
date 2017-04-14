@@ -29,18 +29,6 @@
     return self;
 }
 
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (self) {
-//        [self buildUI];
-//        [self layoutIfNeeded];
-//        CGFloat height = self.height;
-//        DLog(@"%.2f", height);
-//    }
-//    return self;
-//}
-
 - (void)buildUI
 {
     self.avatarImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];

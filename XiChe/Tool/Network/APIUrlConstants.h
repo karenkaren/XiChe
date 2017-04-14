@@ -26,6 +26,7 @@ extern NSString * const kGetPictureCaptchaUrl;   // 获取图形验证码
 extern NSString * const kUserLogoutUrl;    // 退出登录
 
 #pragma mark -- 业务服务
+extern NSString * const kBannerList;    // banner url
 // 绑卡
 //extern NSString * const pay_bankList;   // 银行列表
 //extern NSString * const usr_checkIdCard;    // 是否已经在领投鸟实名
