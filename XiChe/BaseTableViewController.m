@@ -14,15 +14,6 @@
 
 @implementation BaseTableViewController
 
-//- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
-//{
-//    self = [super init];
-//    if (self) {
-//        [self createTableViewWithFrame:frame style:style];
-//    }
-//    return self;
-//}
-
 - (void)createTableViewWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     [self.tableView removeFromSuperview];
@@ -37,6 +28,7 @@
 {
     [self.tableView removeFromSuperview];
     self.tableView = nil;
+
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight - kStatusBarHeight) style:style];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

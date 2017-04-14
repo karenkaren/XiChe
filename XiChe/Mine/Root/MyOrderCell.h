@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyOrderCell;
+@protocol MyOrderCellDelegate <NSObject>
+
+- (void)myOrderCell:(MyOrderCell *)myOrderCell dataIndex:(NSInteger)dataIndex;
+
+@end
+
 @interface MyOrderCell : UITableViewCell
 
 @property (nonatomic, strong) NSArray * datas;
+@property (nonatomic, weak) id<MyOrderCellDelegate> delegate;
 
 @end

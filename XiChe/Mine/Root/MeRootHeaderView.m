@@ -55,8 +55,12 @@
 //    [self.userNameLabel sizeToFit];
     [self addSubview:self.userNameLabel];
     
+    kWeakSelf
     self.carInfoButton = [UIButton createButtonWithTitle:@"我的爱车" color:kTextColor font:kFont(18) block:^(UIButton *button) {
-        
+        kStrongSelf
+        if (strongSelf.myCarClickBlock) {
+            strongSelf.myCarClickBlock(button);
+        }
     }];
     [self addSubview:self.carInfoButton];
     

@@ -9,8 +9,9 @@
 #import "MeRootController.h"
 #import "MeRootHeaderView.h"
 #import "MyOrderCell.h"
+#import "CarListController.h"
 
-@interface MeRootController ()
+@interface MeRootController ()<MyOrderCellDelegate>
 
 @property (nonatomic, strong) MeRootHeaderView * tableHeaderView;
 @property (nonatomic, strong) NSArray * originalDatas;
@@ -39,6 +40,11 @@
     self.tableView.tableHeaderView = self.tableHeaderView;
 //    [self.view layoutIfNeeded];
     
+    self.tableHeaderView.myCarClickBlock = ^(UIButton * button) {
+        DLog(@"我的爱车");
+        [self showMyCar];
+    };
+    
     self.originalDatas = @[@[@"待确认", @"待服务", @"待评价", @"已完成"], @[@"洗车券", @"账户设置"]];
 }
 
@@ -62,6 +68,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"MyOrderCell" forIndexPath:indexPath];
 //        cell.textLabel.text = @"订单";
         MyOrderCell * myOrderCell = (MyOrderCell *)cell;
+        myOrderCell.delegate = self;
         myOrderCell.datas = @[@"待确认", @"待服务", @"待评价", @"已完成"];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"NormalCell" forIndexPath:indexPath];
@@ -82,6 +89,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 10;
+}
+
+- (void)showMyCar
+{
+    CarListController * carListController = [[CarListController alloc] init];
+    carListController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:carListController animated:YES];
+}
+
+- (void)myOrderCell:(MyOrderCell *)myOrderCell dataIndex:(NSInteger)dataIndex
+{
+    
 }
 
 @end

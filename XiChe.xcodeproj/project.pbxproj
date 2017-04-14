@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		33D4C1BFDFBCE7BD20116FF0 /* libPods-XiChe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D009192BADE5A9ADE883C1 /* libPods-XiChe.a */; };
+		E1159DAC1EA07299001EBE61 /* cars_total.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1159DAB1EA07299001EBE61 /* cars_total.plist */; };
+		E1159DB01EA07343001EBE61 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DAF1EA07343001EBE61 /* CarModel.m */; };
+		E1159DB31EA07453001EBE61 /* CarListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DB21EA07453001EBE61 /* CarListController.m */; };
+		E1159DB61EA097B9001EBE61 /* CarGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DB51EA097B9001EBE61 /* CarGroupModel.m */; };
 		E12944681E94DF51005E8746 /* RetrieveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12944671E94DF51005E8746 /* RetrieveModel.m */; };
 		E129446C1E94E017005E8746 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E129446B1E94E017005E8746 /* LoginModel.m */; };
 		E12944701E94E0E7005E8746 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E129446F1E94E0E7005E8746 /* RegisterModel.m */; };
@@ -117,6 +121,13 @@
 /* Begin PBXFileReference section */
 		178BA826E6BFE27D96C7BEBE /* Pods-XiChe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiChe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiChe/Pods-XiChe.debug.xcconfig"; sourceTree = "<group>"; };
 		30454E0954F092A5EA659458 /* Pods-XiChe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiChe.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiChe/Pods-XiChe.release.xcconfig"; sourceTree = "<group>"; };
+		E1159DAB1EA07299001EBE61 /* cars_total.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cars_total.plist; sourceTree = "<group>"; };
+		E1159DAE1EA07343001EBE61 /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
+		E1159DAF1EA07343001EBE61 /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
+		E1159DB11EA07453001EBE61 /* CarListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarListController.h; sourceTree = "<group>"; };
+		E1159DB21EA07453001EBE61 /* CarListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarListController.m; sourceTree = "<group>"; };
+		E1159DB41EA097B9001EBE61 /* CarGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarGroupModel.h; sourceTree = "<group>"; };
+		E1159DB51EA097B9001EBE61 /* CarGroupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarGroupModel.m; sourceTree = "<group>"; };
 		E12944661E94DF51005E8746 /* RetrieveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveModel.h; sourceTree = "<group>"; };
 		E12944671E94DF51005E8746 /* RetrieveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveModel.m; sourceTree = "<group>"; };
 		E129446A1E94E017005E8746 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
@@ -345,6 +356,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E1159DAD1EA07321001EBE61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1159DAB1EA07299001EBE61 /* cars_total.plist */,
+				E1159DAE1EA07343001EBE61 /* CarModel.h */,
+				E1159DAF1EA07343001EBE61 /* CarModel.m */,
+				E1159DB41EA097B9001EBE61 /* CarGroupModel.h */,
+				E1159DB51EA097B9001EBE61 /* CarGroupModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		E12944651E94DEED005E8746 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,10 +433,12 @@
 		E12944A11E9A706A005E8746 /* CarInfo */ = {
 			isa = PBXGroup;
 			children = (
+				E1159DAD1EA07321001EBE61 /* Model */,
 				E12944A61E9A75CB005E8746 /* View */,
 				E12944A21E9A7091005E8746 /* Controller */,
 			);
 			name = CarInfo;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E12944A21E9A7091005E8746 /* Controller */ = {
@@ -421,6 +446,8 @@
 			children = (
 				E12944A31E9A70DF005E8746 /* AddCarInfoController.h */,
 				E12944A41E9A70DF005E8746 /* AddCarInfoController.m */,
+				E1159DB11EA07453001EBE61 /* CarListController.h */,
+				E1159DB21EA07453001EBE61 /* CarListController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -456,7 +483,6 @@
 		E13DB8D31E90B36C00171B7D /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				E12944A11E9A706A005E8746 /* CarInfo */,
 				E129449C1E9A6C5D005E8746 /* Detail */,
 				E13DB8D61E90B45800171B7D /* Root */,
 			);
@@ -1036,6 +1062,7 @@
 		E1CAB8981E90ABF100D3F6FC /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				E12944A11E9A706A005E8746 /* CarInfo */,
 				E1CAB89C1E90ABF100D3F6FC /* Feedback */,
 				E1CAB8A11E90ABF100D3F6FC /* Root */,
 			);
@@ -1193,6 +1220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1159DAC1EA07299001EBE61 /* cars_total.plist in Resources */,
 				E1CAB78F1E90AA8F00D3F6FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1302,6 +1330,7 @@
 				E13DB8E31E910BC600171B7D /* BaseTableViewController.m in Sources */,
 				E1CAB8521E90ABAE00D3F6FC /* ControllersManager.m in Sources */,
 				E1CAB8441E90ABAE00D3F6FC /* NSString+Check.m in Sources */,
+				E1159DB61EA097B9001EBE61 /* CarGroupModel.m in Sources */,
 				E1CAB84D1E90ABAE00D3F6FC /* UINavigationController+FinishBlock.m in Sources */,
 				E12944731E964F0C005E8746 /* ShopProfileCell.m in Sources */,
 				E1CAB85A1E90ABAE00D3F6FC /* UIViewController+PresentTransition.m in Sources */,
@@ -1336,6 +1365,7 @@
 				E1CAB84B1E90ABAE00D3F6FC /* UIImage+Extension.m in Sources */,
 				E1CAB8421E90ABAE00D3F6FC /* NSObject+Common.m in Sources */,
 				E1CAB7E21E90AB8700D3F6FC /* CustomButton.m in Sources */,
+				E1159DB31EA07453001EBE61 /* CarListController.m in Sources */,
 				E1CAB8651E90ABAE00D3F6FC /* MessageBox.m in Sources */,
 				E1CAB85D1E90ABAE00D3F6FC /* KeyValueStoreManager.m in Sources */,
 				E12944A01E9A6CD6005E8746 /* ShopDetailController.m in Sources */,
@@ -1348,6 +1378,7 @@
 				E1CAB8571E90ABAE00D3F6FC /* JSActions.m in Sources */,
 				E1CAB8591E90ABAE00D3F6FC /* UINavigationController+PresentTransition.m in Sources */,
 				E1CAB8631E90ABAE00D3F6FC /* CustomTextField.m in Sources */,
+				E1159DB01EA07343001EBE61 /* CarModel.m in Sources */,
 				E14607B41E9E203300BDCADE /* MyOrderCell.m in Sources */,
 				E1CAB7841E90AA8F00D3F6FC /* main.m in Sources */,
 			);

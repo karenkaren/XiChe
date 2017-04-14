@@ -10,4 +10,6 @@
 
 @interface MeRootHeaderView : UIView
 
+@property (nonatomic, copy) void(^myCarClickBlock)(UIButton *button);
+
 @end
