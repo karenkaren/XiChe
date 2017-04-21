@@ -7,7 +7,6 @@
 //
 
 #import "HomeRootHeaderView.h"
-#import "BannerView.h"
 
 @interface HomeRootHeaderView ()
 
@@ -22,11 +21,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self buildUI];
-        [BannerModel getBannerListWithBlock:^(id response, id data, NSError *error) {
-            if (data) {
-                self.bannerView.bannersList = data;
-            }
-        }];
+//        [BannerModel getBannerListWithBlock:^(id response, id data, NSError *error) {
+//            if (data) {
+//                self.bannerView.bannersList = data;
+//            }
+//        }];
     }
     return self;
 }
@@ -67,6 +66,13 @@
         make.height.equalTo(@(kGeneralSize));
     }];
     
+}
+
+- (void)refreshHeaderViewWithBanners:(NSArray<BannerModel *> *)banners
+{
+    if (banners) {
+        self.bannerView.bannersList = banners;
+    }
 }
 
 @end

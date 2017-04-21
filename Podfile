@@ -10,4 +10,5 @@ pod 'FMDB', '~> 2.6'
 pod 'YTKKeyValueStore'
 pod 'MBProgressHUD', '~> 1.0.0'
 pod 'ActionSheetPicker-3.0'
+pod 'BaiduMapKit'
 end

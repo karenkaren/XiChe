@@ -17,11 +17,13 @@
 // Banner状态
 @property (nonatomic, assign) BOOL bannerState;
 // banner跳转地址
+@property (nonatomic, copy) NSString * linkUrl;
+// banner图片地址
 @property (nonatomic, copy) NSString * bannerUrl;
+
+
 // banner内容
 @property (nonatomic, copy) NSString * bannerContent;
-// banner图片地址
-@property (nonatomic, copy) NSString * bannerPicture;
 // banner标题
 @property (nonatomic, copy) NSString * bannerTitle;
 // banner类型
@@ -39,6 +41,6 @@
 // 分享链接
 @property (nonatomic, copy) NSString * shareUrl;
 
-+ (void)getBannerListWithBlock:(APIResultDataBlock)block;
+//+ (void)getBannerListWithBlock:(APIResultDataBlock)block;
 
 @end

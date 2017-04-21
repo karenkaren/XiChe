@@ -15,6 +15,7 @@
 		E1159DB91EA0BB12001EBE61 /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DB81EA0BB12001EBE61 /* BannerView.m */; };
 		E1159DBC1EA0BB84001EBE61 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DBB1EA0BB84001EBE61 /* BannerModel.m */; };
 		E1159DBF1EA0CCE3001EBE61 /* HomeRootHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1159DBE1EA0CCE3001EBE61 /* HomeRootHeaderView.m */; };
+		E1258D911EA9D366001C64B1 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1258D901EA9D366001C64B1 /* HomeModel.m */; };
 		E12944681E94DF51005E8746 /* RetrieveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12944671E94DF51005E8746 /* RetrieveModel.m */; };
 		E129446C1E94E017005E8746 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E129446B1E94E017005E8746 /* LoginModel.m */; };
 		E12944701E94E0E7005E8746 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E129446F1E94E0E7005E8746 /* RegisterModel.m */; };
@@ -137,6 +138,8 @@
 		E1159DBB1EA0BB84001EBE61 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
 		E1159DBD1EA0CCE3001EBE61 /* HomeRootHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRootHeaderView.h; sourceTree = "<group>"; };
 		E1159DBE1EA0CCE3001EBE61 /* HomeRootHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRootHeaderView.m; sourceTree = "<group>"; };
+		E1258D8F1EA9D366001C64B1 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		E1258D901EA9D366001C64B1 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		E12944661E94DF51005E8746 /* RetrieveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveModel.h; sourceTree = "<group>"; };
 		E12944671E94DF51005E8746 /* RetrieveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveModel.m; sourceTree = "<group>"; };
 		E129446A1E94E017005E8746 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 			children = (
 				E1159DBA1EA0BB84001EBE61 /* BannerModel.h */,
 				E1159DBB1EA0BB84001EBE61 /* BannerModel.m */,
+				E1258D8F1EA9D366001C64B1 /* HomeModel.h */,
+				E1258D901EA9D366001C64B1 /* HomeModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1342,6 +1347,7 @@
 				E1CAB8551E90ABAE00D3F6FC /* StartPageManager.m in Sources */,
 				E12944701E94E0E7005E8746 /* RegisterModel.m in Sources */,
 				E1CAB85B1E90ABAE00D3F6FC /* RootActionSheetPicker.m in Sources */,
+				E1258D911EA9D366001C64B1 /* HomeModel.m in Sources */,
 				E13DB8E31E910BC600171B7D /* BaseTableViewController.m in Sources */,
 				E1CAB8521E90ABAE00D3F6FC /* ControllersManager.m in Sources */,
 				E1CAB8441E90ABAE00D3F6FC /* NSString+Check.m in Sources */,

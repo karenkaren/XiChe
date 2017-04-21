@@ -29,7 +29,10 @@ NSString * const kGetPictureCaptchaUrl = @"/user/register/pictureCode";
 NSString * const kUserLogoutUrl = @"/user/login/logout";
 
 #pragma mark -- 业务服务
-NSString * const kBannerList = @"/page/banner";
+NSString * const kHomepageRecommend = @"/homepage/recommend";   // 首页
+NSString * const kShopLists = @"/shop/lists"; // 洗车店列表
+
+//NSString * const kBannerList = @"/page/banner";
 //// 绑卡
 //NSString * const pay_bankList = @"/v1/bank-cards";
 //NSString * const usr_checkIdCard = @"/v1/accounts/id-cards";

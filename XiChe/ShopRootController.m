@@ -15,7 +15,7 @@
 
 @interface ShopRootController ()
 
-@property (nonatomic, strong) NSArray * shopList;
+@property (nonatomic, strong) NSMutableArray * shopList;
 
 @end
 
@@ -28,12 +28,47 @@
 
     [self.tableView registerClass:[ShopProfileCell class] forCellReuseIdentifier:kShopProfileCell];
     
-    kWeakSelf
-    [ShopProfileModel getShopList:nil block:^(id response, NSArray *shopList, NSError *error) {
-        kStrongSelf
-        strongSelf.shopList = shopList;
-        [strongSelf.tableView reloadData];
+    self.shopList = [NSMutableArray array];
+    
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.currentPage = 0;
+        [self getShopList];
     }];
+    
+    // 上拉刷新
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        self.currentPage++;
+        [self getShopList];
+    }];
+    
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)getShopList
+{
+    if (self.currentPage == 0) {
+        [self.shopList removeAllObjects];
+    } else {
+        if (self.currentPage * self.pageSize >= self.totalCount) {
+            [self.tableView.mj_footer endRefreshing];
+            return;
+        }
+    }
+    
+    NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
+    kWeakSelf
+    [ShopProfileModel getShopList:params block:^(id response, NSArray *shopList, NSInteger totalCount, NSError *error) {
+        kStrongSelf
+        [strongSelf.tableView.mj_header endRefreshing];
+        [strongSelf.tableView.mj_footer endRefreshing];
+        if (shopList && totalCount) {
+            strongSelf.totalCount = totalCount;
+            [strongSelf.shopList addObjectsFromArray:shopList];
+            [strongSelf.tableView reloadData];
+        }
+    }];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -54,7 +89,7 @@
 {
 //    ShopProfileCell * cell = (ShopProfileCell *)[tableView cellForRowAtIndexPath:indexPath];
 //    return [cell getAutoCellHeight];
-    return 200;
+    return 210;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

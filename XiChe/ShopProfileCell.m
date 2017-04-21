@@ -91,7 +91,7 @@
     [self.washingCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.shopImageView.mas_bottom).offset(10);
         make.left.equalTo(self.shopImageView);
-        make.width.equalTo(self.mas_width).multipliedBy(1.0 / 3.0);
+        make.width.equalTo(self).offset(-20).multipliedBy(1.0 / 3.0);
         make.height.greaterThanOrEqualTo(@18);
     }];
     
@@ -116,7 +116,7 @@
     [appointmentButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-kCommonMargin);
         make.top.equalTo(self.preferentialInfoLabel);
-        make.height.equalTo(@(kGeneralSize));
+        make.height.equalTo(self.preferentialInfoLabel);
         make.width.equalTo(@60);
     }];
 
@@ -148,14 +148,16 @@
 - (void)setShopProfile:(ShopProfileModel *)shopProfile
 {
     _shopProfile = shopProfile;
-    self.shopImageView.image = shopProfile.shopImage;
+//    self.shopImageView.image = shopProfile.shopImage;
+    self.shopImageView.image = shopProfile.shopImage ?: [UIImage imageNamed:[NSString stringWithFormat:@"welcome_image_0"]];
     self.shopNameLabel.text = shopProfile.shopName;
     self.starsView.backgroundColor = kRandomColor;
-    self.shopAddressLabel.text = shopProfile.shopAddress;
-    self.washingCountLabel.text = [NSString stringWithFormat:@"正在洗车数:%ld个", shopProfile.washingCount];
-    self.queueingCountLabel.text = [NSString stringWithFormat:@"排队人数:%ld个", shopProfile.queueingCount];
-    self.waitingTimeLabel.text = [NSString stringWithFormat:@"等待时间:%.2f小时", shopProfile.waitingTime];
-    self.preferentialInfoLabel.text = shopProfile.preferentialInfo;
+    self.shopAddressLabel.text = shopProfile.shopLocation;
+    self.washingCountLabel.text = [NSString stringWithFormat:@"正在洗车数:%ld个", shopProfile.worker];
+    self.queueingCountLabel.text = [NSString stringWithFormat:@"排队人数:%ld个", shopProfile.washSpace];
+    self.waitingTimeLabel.text = [NSString stringWithFormat:@"等待时间:%.1f小时", shopProfile.waitingTime];
+//    self.preferentialInfoLabel.text = shopProfile.preferentialInfo;
+    self.preferentialInfoLabel.text = (![NSString isEmpty:shopProfile.preferentialInfo]) ? shopProfile.preferentialInfo : @"周二上午8:00～12:00八折洗车";
 }
 
 @end

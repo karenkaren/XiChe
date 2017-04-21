@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BaiduMapKit (3.2.1)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -32,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - AFNetworking
+  - BaiduMapKit
   - FMDB (~> 2.6)
   - IQKeyboardManager (~> 3.3.4)
   - Masonry
@@ -44,6 +46,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMapKit: 9c748785aa3dddfc41dcb70c14b21ce32f680930
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -53,6 +56,6 @@ SPEC CHECKSUMS:
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
 
-PODFILE CHECKSUM: bb0074bc56b057359586e22aefde033f3d5b07d5
+PODFILE CHECKSUM: 64585de086c781b7131dab11ab7ccdb4e0b51788
 
 COCOAPODS: 1.1.1

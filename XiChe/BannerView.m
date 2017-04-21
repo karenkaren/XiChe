@@ -38,7 +38,7 @@
 
 @implementation BannerView
 
-- (void)setBannersList:(NSArray *)bannersList
+- (void)setBannersList:(NSArray<BannerModel *> *)bannersList
 {
     _bannersList = bannersList;
     [self.timer invalidate];
@@ -66,7 +66,7 @@
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight)];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.centerX = kScreenWidth * 0.5;
-        NSURL * url = [NSURL URLWithString:banner.bannerPicture];
+        NSURL * url = [NSURL URLWithString:banner.bannerUrl];
         [imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeholder_banner"] options:SDWebImageRetryFailed];
         [self addTapForImageView:imageView];
         [self.scroll addSubview:imageView];
@@ -91,7 +91,7 @@
             banner = self.bannersList[i - 1];
             imageView.tag = i - 1;
         }
-        NSURL * url = [NSURL URLWithString:banner.bannerPicture];
+        NSURL * url = [NSURL URLWithString:banner.bannerUrl];
         [imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeholder_banner"] options:SDWebImageRetryFailed];
         [self addTapForImageView:imageView];
         [self.scroll addSubview:imageView];

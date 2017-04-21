@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BannerView.h"
 
 @interface HomeRootHeaderView : UIView
+
+- (void)refreshHeaderViewWithBanners:(NSArray<BannerModel *> *)banners;
 
 @end

@@ -20,6 +20,6 @@
 @interface BannerView : UIView
 
 @property (nonatomic, weak) id<BannerViewDelegate> delegate;
-@property (nonatomic, strong) NSArray * bannersList;
+@property (nonatomic, strong)  NSArray<BannerModel *> * bannersList;
 
 @end

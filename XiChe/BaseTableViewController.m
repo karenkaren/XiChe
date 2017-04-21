@@ -39,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self createTableViewWithStyle:UITableViewStylePlain];
+    self.pageSize = 10;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
