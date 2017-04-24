@@ -9,7 +9,7 @@
 #import "MeRootController.h"
 #import "MeRootHeaderView.h"
 #import "MyOrderCell.h"
-#import "CarListController.h"
+#import "CarBrandListController.h"
 
 @interface MeRootController ()<MyOrderCellDelegate>
 
@@ -95,9 +95,9 @@
 
 - (void)showMyCar
 {
-    CarListController * carListController = [[CarListController alloc] init];
-    carListController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:carListController animated:YES];
+    CarBrandListController * carBrandListController = [[CarBrandListController alloc] init];
+    carBrandListController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:carBrandListController animated:YES];
 }
 
 - (void)myOrderCell:(MyOrderCell *)myOrderCell dataIndex:(NSInteger)dataIndex

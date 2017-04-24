@@ -11,12 +11,28 @@
 @interface CarModel : BaseModel
 
 /**
- *  品牌图标
+ *  id
  */
-@property (nonatomic, copy) NSString * icon;
+@property (nonatomic, assign) NSInteger ID;
 /**
- *  品牌名称
+ *  图标
+ */
+@property (nonatomic, copy) NSString * imgurl;
+/**
+ *  名称
  */
 @property (nonatomic, copy) NSString * name;
+/**
+ *  等级
+ */
+@property (nonatomic, assign) NSInteger levelid;
+/**
+ *  等级名称
+ */
+@property (nonatomic, copy) NSString * levelname;
+/**
+ *  售价
+ */
+@property (nonatomic, copy) NSString * price;
 
 @end

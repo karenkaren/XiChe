@@ -1,5 +1,5 @@
 //
-//  CarGroupModel.h
+//  CarBrandModel.h
 //  XiChe
 //
 //  Created by LiuFeifei on 2017/4/14.
@@ -9,17 +9,17 @@
 #import "BaseModel.h"
 #import "CarModel.h"
 
-@interface CarGroupModel : BaseModel
+@interface CarBrandModel : BaseModel
 
 /**
  *  分组标题
  */
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString * letter;
 /**
  *  每一组中的汽车数据(存储的是汽车的模型)
  */
-@property (nonatomic, strong) NSArray *cars;
+@property (nonatomic, strong) NSArray * list;
 
-+ (NSArray *)getCarGroupList;
++ (void)getCarBrandList:(NSDictionary *)params block:(APIResultDataBlock)block;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  CarListController.h
+//  CarBrandListController.h
 //  XiChe
 //
 //  Created by LiuFeifei on 2017/4/14.
@@ -8,6 +8,6 @@
 
 #import "BaseTableViewController.h"
 
-@interface CarListController : BaseTableViewController
+@interface CarBrandListController : BaseTableViewController
 
 @end
