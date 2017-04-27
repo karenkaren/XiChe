@@ -35,4 +35,6 @@
  */
 @property (nonatomic, copy) NSString * price;
 
++ (void)addCar:(NSDictionary *)params block:(APIResultBlock)block;
+
 @end

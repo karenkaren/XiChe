@@ -13,16 +13,17 @@
 @interface CarSeriesListController ()
 
 @property (nonatomic, strong) NSArray * originalData;
+@property (nonatomic, strong) CarModel * carBrand;
 
 @end
 
 @implementation CarSeriesListController
 
-- (instancetype)initWithCarBrandId:(NSInteger)carBrandId
+- (instancetype)initWithCar:(CarModel *)car
 {
     self = [super init];
     if (self) {
-        self.carBrandId = carBrandId;
+        self.carBrand = car;
     }
     return self;
 }
@@ -30,8 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.title = [NSString stringWithFormat:@"品牌id:%ld", self.carBrandId];
+ 
+    self.title = [NSString stringWithFormat:@"品牌id:%ld", self.carBrand.ID];
     
     self.tableView.height += kTabBarHeight;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CarCell"];
@@ -41,7 +42,7 @@
 
 - (void)getOriginalData
 {
-    [CarSeriesModel getCarSeriesListWithCarId:self.carBrandId block:^(id response, id data, NSError *error) {
+    [CarSeriesModel getCarSeriesListWithCarId:self.carBrand.ID block:^(id response, id data, NSError *error) {
         if (data && isArray(data)) {
             self.originalData = data;
             [self.tableView reloadData];
@@ -104,7 +105,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CarSeriesModel * carSeries = self.originalData[indexPath.section];
+    CarModel * car = carSeries.serieslist[indexPath.row];
+    NSString * brand = car.name;
+    NSString * brandtype = self.carBrand.name;
+    NSString * carType = car.levelname;
+    DLog(@"brandtype:%@ brand:%@ carType:%@", brandtype, brand, carType);
     
+    NSDictionary * params = @{@"brand" : brand, @"brandtype" : brandtype, @"carType" : carType};
+    [CarModel addCar:params block:^(id response, NSError *error) {
+        if (!error) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }];
 }
 
 @end

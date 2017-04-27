@@ -102,7 +102,7 @@
 {
     CarBrandModel * carGroup = self.originalData[indexPath.section];
     CarModel * car = carGroup.list[indexPath.row];
-    CarSeriesListController * carSeriesListController = [[CarSeriesListController alloc] initWithCarBrandId:car.ID];
+    CarSeriesListController * carSeriesListController = [[CarSeriesListController alloc] initWithCar:car];
     [self.navigationController pushViewController:carSeriesListController animated:YES];
 }
 

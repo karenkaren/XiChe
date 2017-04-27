@@ -36,8 +36,7 @@ NSString * const kShopListsDefault = @"/shop/lists"; // 默认洗车店列表
 NSString * const kShopListsWithDistance = @"/shop/lists/distance"; // 根据距离获取店铺列表
 NSString * const kShopProductList = @"/shop/product/list";    // 洗车店内服务
 NSString * const kShopReserveAdd = @"/reserve/add"; // 提交订单
-
-
+NSString * const kUserAddCar = @"/car/add";     // 添加用户车辆
 
 
 //NSString * const kBannerList = @"/page/banner";

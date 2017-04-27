@@ -7,11 +7,12 @@
 //
 
 #import "BaseTableViewController.h"
+#import "CarModel.h"
 
 @interface CarSeriesListController : BaseTableViewController
 
-@property (nonatomic, assign) NSInteger carBrandId;
+//@property (nonatomic, assign) NSInteger carBrandId;
 
-- (instancetype)initWithCarBrandId:(NSInteger)carBrandId;
+- (instancetype)initWithCar:(CarModel *)car;
 
 @end
