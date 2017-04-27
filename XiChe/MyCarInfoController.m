@@ -8,12 +8,15 @@
 
 #import "MyCarInfoController.h"
 #import "MyCarInfoCell.h"
+#import "CarBrandListController.h"
+#import "CarModel.h"
 
 #define kMyCarInfoCell @"MyCarInfoCell"
 
 @interface MyCarInfoController ()
 
 @property (nonatomic, strong) NSMutableArray * myCarList;
+@property (nonatomic, strong) UIButton * addCarButton;
 
 @end
 
@@ -21,6 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.addCarButton = [UIButton createButtonWithTitle:@"添加爱车" color:[UIColor redColor] font:kFont(30) block:^(UIButton *button) {
+        CarBrandListController * carBrandListController = [[CarBrandListController alloc] init];
+        carBrandListController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:carBrandListController animated:YES];
+    }];
+    self.addCarButton.center = self.view.center;
+    [self.view addSubview:self.addCarButton];
     
     [self.tableView registerClass:[MyCarInfoCell class] forCellReuseIdentifier:kMyCarInfoCell];
     
@@ -54,17 +66,18 @@
     }
     
     NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
-//    kWeakSelf
-//    [ShopProfileModel getShopList:params block:^(id response, NSArray *shopList, NSInteger totalCount, NSError *error) {
-//        kStrongSelf
-//        [strongSelf.tableView.mj_header endRefreshing];
-//        [strongSelf.tableView.mj_footer endRefreshing];
-//        if (shopList && totalCount) {
-//            strongSelf.totalCount = totalCount;
-//            [strongSelf.shopList addObjectsFromArray:shopList];
-//            [strongSelf.tableView reloadData];
-//        }
-//    }];
+    kWeakSelf
+    [CarModel getCarList:params block:^(id response, NSArray * carList, NSInteger totalCount, NSError *error) {
+        kStrongSelf
+        [strongSelf.tableView.mj_header endRefreshing];
+        [strongSelf.tableView.mj_footer endRefreshing];
+        if (carList && totalCount) {
+            self.addCarButton.hidden = YES;
+            strongSelf.totalCount = totalCount;
+            [strongSelf.myCarList addObjectsFromArray:carList];
+            [strongSelf.tableView reloadData];
+        }
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -76,6 +89,9 @@
 {
     MyCarInfoCell * cell = [tableView dequeueReusableCellWithIdentifier:kMyCarInfoCell forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    CarModel * car = self.myCarList[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ %@", car.brand, car.carNo, car.carType];
 //    cell.shopProfile = self.myCarList[indexPath.row];
     
     return cell;

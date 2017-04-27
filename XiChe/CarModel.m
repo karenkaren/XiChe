@@ -19,9 +19,20 @@
     }];
 }
 
-+ (void)getCarList:(NSDictionary *)params block:(APIResultDataBlock)block
++ (void)getCarList:(NSDictionary *)params block:(void (^)(id response, NSArray * carList, NSInteger totalCount, NSError *error))block
 {
-//    [NetAPIManager sharedNetAPIManager] requestWithPath:<#(NSString *)#> params:<#(NSDictionary *)#> methodType:<#(NetworkMethod)#> block:<#^(id response, NSError *error)block#>
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kUserCarList params:params methodType:Get block:^(id response, NSError *error) {
+        NSArray * carList = nil;
+        NSInteger totalCount = 0;
+        if (!error) {
+            BaseDto * dto = [BaseDto mj_objectWithKeyValues:response];
+            carList = [CarModel mj_objectArrayWithKeyValuesArray:dto.data[@"list"]];
+            totalCount = [dto.data[@"totalCount"] integerValue];
+        }
+        if (block) {
+            block(response, carList, totalCount, nil);
+        }
+    }];
 }
 
 @end

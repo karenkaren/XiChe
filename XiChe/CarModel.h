@@ -35,7 +35,13 @@
  */
 @property (nonatomic, copy) NSString * price;
 
+
+/////////////////////
+@property (nonatomic, copy) NSString * brand;
+@property (nonatomic, copy) NSString * carNo;
+@property (nonatomic, copy) NSString * carType;
+
 + (void)addCar:(NSDictionary *)params block:(APIResultBlock)block;
-+ (void)getCarList:(NSDictionary *)params block:(APIResultDataBlock)block;
++ (void)getCarList:(NSDictionary *)params block:(void (^)(id response, NSArray * carList, NSInteger totalCount, NSError *error))block;
 
 @end
