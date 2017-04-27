@@ -62,9 +62,6 @@ static NSString * pathKey(NSString *path, NSDictionary *parameters){
     // 封装基础参数
     params = [self configParameters:params.mutableCopy];
     
-    // 设置header
-//    [self setHeader];
-    
     // 发起请求
     switch (methodType) {
         case Get:
@@ -83,13 +80,17 @@ static NSString * pathKey(NSString *path, NSDictionary *parameters){
                 NSError * error = [self handleResponse:responseObject autoShowError:autoShowError];
                 if (error) {
                     responseObject = [NSObject loadResponseWithPath:pathKey(localPath, params)];
-                    block(responseObject, error);
+                    if (block) {
+                        block(responseObject, error);
+                    }
                 } else {
                     // 如果需要缓存，则缓存
                     if ([responseObject isKindOfClass:[NSDictionary class]]) {
                         [NSObject saveResponseData:responseObject toPath:pathKey(localPath, params)];
                     }
-                    block(responseObject, nil);
+                    if (block) {
+                        block(responseObject, nil);
+                    }
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 DLog(@"\n===========response===========\n%@:\n%@", [NSString netAbsolutePath:path], error.localizedDescription);
@@ -97,26 +98,32 @@ static NSString * pathKey(NSString *path, NSDictionary *parameters){
                     [NSObject showError:error];
                 }
                 id responseObject = [NSObject loadResponseWithPath:pathKey(localPath, params)];
-                block(responseObject, error);
+                if (block) {
+                    block(responseObject, error);
+                }
             }];
         }
             break;
         case Post:
         {
                 [self POST:[NSString netAbsolutePath:path] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                DLog(@"\n===========response===========\n%@:\n%@", [NSString netAbsolutePath:path], responseObject);
-                id error = [self handleResponse:responseObject autoShowError:autoShowError];
-                if (error) {
-                    block(nil, error);
-                } else {
-                    block(responseObject, nil);
-                }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                DLog(@"\n===========response===========\n%@:\n%@", [NSString netAbsolutePath:path], error.localizedDescription);
-                if (autoShowError) {
-                    [NSObject showError:error];
-                }
-                block(nil, error);
+                    DLog(@"\n===========response===========\n%@:\n%@", [NSString netAbsolutePath:path], responseObject);
+                    id error = [self handleResponse:responseObject autoShowError:autoShowError];
+                    if (block) {
+                        if (error) {
+                            block(nil, error);
+                        } else {
+                            block(responseObject, nil);
+                        }
+                    }
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    DLog(@"\n===========response===========\n%@:\n%@", [NSString netAbsolutePath:path], error.localizedDescription);
+                    if (autoShowError) {
+                        [NSObject showError:error];
+                    }
+                    if (block) {
+                        block(nil, error);
+                    }
             }];
         }
             break;
@@ -144,23 +151,22 @@ static NSString * pathKey(NSString *path, NSDictionary *parameters){
     // 封装基础参数
     params = [self configParameters:params.mutableCopy];
     
-    // 设置header
-//    [self setHeader];
-    
-    // 设置加密参数
-    
     [self POST:[NSString netAbsolutePath:path] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         //按照表单格式把二进制文件写入formData表单
         [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:mimeType];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         DLog(@"%@", uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        block(responseObject, nil);
+        if (block) {
+            block(responseObject, nil);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (autoShowError) {
             [NSObject showError:error];
         }
-        block(nil, error);
+        if (block) {
+            block(nil, error);
+        }
     }];
 }
 
@@ -189,14 +195,53 @@ static NSString * pathKey(NSString *path, NSDictionary *parameters){
     return parameters;
 }
 
-//- (void)setHeader
-//{
-//    NSString * sessionKey = [[NSUserDefaults standardUserDefaults] stringForKey:kSessionKey];
-//    if (![esString(sessionKey) isEqualToString:@""]) {
-//        [self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", sessionKey] forHTTPHeaderField:@"Authorization"];
-//    } else {
-//        [self.requestSerializer clearAuthorizationHeader];
-//    }
-//}
+- (void)customRequestWithPath:(NSString *)path
+                       params:(NSDictionary *)params
+                         body:(id)body
+                   methodType:(NetworkMethod)methodType
+                autoShowError:(BOOL)autoShowError
+                        block:(APIResultBlock)block
+{
+    NSParameterAssert(methodType);
+    NSParameterAssert(methodType != Get);
+    
+    path = esString(path);
+    if (!path || path.length <= 0) {
+        return;
+    }
+    // log请求数据
+    DLog(@"\n===========request===========\n%@\n%@:\n%@", kNetworkMethodName[methodType], path, params);
+    
+    // 封装基础参数
+    params = [self configParameters:params.mutableCopy];
+    
+    NSMutableURLRequest * request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString netAbsolutePath:path] parameters:params error:nil];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString * bodyString = [NSObject jsonStringWithObject:body];
+    // 设置postBody
+    NSData * postBody = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:postBody];
+    
+    [[[NetAPIManager sharedNetAPIManager] dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error) {
+            if (autoShowError) {
+                [NSObject showError:error];
+            }
+            if (block) {
+                block(nil, error);
+            }
+        } else {
+            error = [self handleResponse:responseObject autoShowError:autoShowError];
+            if (block) {
+                if (error) {
+                    block(nil, error);
+                } else {
+                    block(responseObject, nil);
+                }
+            }
+        }
+    }] resume];
+}
 
 @end

@@ -37,5 +37,11 @@ singleton_interface(NetAPIManager)
                 methodType:(NetworkMethod)methodType
              autoShowError:(BOOL)autoShowError
                      block:(APIResultBlock)block;
+- (void)customRequestWithPath:(NSString *)path
+                       params:(NSDictionary *)params
+                         body:(id)body
+                   methodType:(NetworkMethod)methodType
+                autoShowError:(BOOL)autoShowError
+                        block:(APIResultBlock)block;
 
 @end

@@ -16,6 +16,8 @@
 @interface ShopRootController ()
 
 @property (nonatomic, strong) NSMutableArray * shopList;
+@property (nonatomic, assign) ShopSortType shopSortType;
+@property (nonatomic, assign) NSInteger selectedSegmentIndex;
 
 @end
 
@@ -25,8 +27,15 @@
     [super viewDidLoad];
     
     self.title = @"洗车店";
+    
+    self.shopSortType = ShopSortTypeOfDefault;
+    self.selectedSegmentIndex = -1;
 
     [self.tableView registerClass:[ShopProfileCell class] forCellReuseIdentifier:kShopProfileCell];
+    
+    UISegmentedControl * segmented = [[UISegmentedControl alloc] initWithItems:@[@"价格", @"等待时间", @"距离", @"评价"]];
+    [segmented addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
+    self.tableView.tableHeaderView = segmented;
     
     self.shopList = [NSMutableArray array];
     
@@ -45,6 +54,33 @@
     [self.tableView.mj_header beginRefreshing];
 }
 
+- (void)segmentValueChanged:(UISegmentedControl *)segment
+{
+    if (self.selectedSegmentIndex == segment.selectedSegmentIndex) {
+        return;
+    }
+    self.selectedSegmentIndex = segment.selectedSegmentIndex;
+    switch (segment.selectedSegmentIndex) {
+        case 0:
+            self.shopSortType = ShopSortTypeOfPrice;
+            break;
+        case 1:
+            self.shopSortType = ShopSortTypeOfWaitingTime;
+            break;
+        case 2:
+            self.shopSortType = ShopSortTypeOfDistance;
+            break;
+        case 3:
+            self.shopSortType = ShopSortTypeOfEstimate;
+            break;
+        default:
+            self.shopSortType = ShopSortTypeOfPrice;
+            break;
+    }
+    self.currentPage = 0;
+    [self.tableView.mj_header beginRefreshing];
+}
+
 - (void)getShopList
 {
     if (self.currentPage == 0) {
@@ -58,7 +94,7 @@
     
     NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
     kWeakSelf
-    [ShopProfileModel getShopList:params block:^(id response, NSArray *shopList, NSInteger totalCount, NSError *error) {
+    [ShopProfileModel getShopListWithSortType:self.shopSortType params:params block:^(id response, NSArray *shopList, NSInteger totalCount, NSError *error) {
         kStrongSelf
         [strongSelf.tableView.mj_header endRefreshing];
         [strongSelf.tableView.mj_footer endRefreshing];
@@ -68,7 +104,6 @@
             [strongSelf.tableView reloadData];
         }
     }];
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -8,6 +8,14 @@
 
 #import "BaseModel.h"
 
+typedef NS_ENUM(NSUInteger, ShopSortType) {
+    ShopSortTypeOfDefault, // 默认
+    ShopSortTypeOfPrice,    // 根据价格排序
+    ShopSortTypeOfWaitingTime,  // 根据等待时间排序
+    ShopSortTypeOfDistance, // 根据距离排序
+    ShopSortTypeOfEstimate  // 根据评价排序
+};
+
 @interface ShopProfileModel : BaseModel
 
 // 洗车店简介图片
@@ -42,6 +50,6 @@
 // 联系电话
 @property (nonatomic, copy) NSString * phone;
 
-+ (void)getShopList:(NSDictionary *)params block:(void (^)(id response, NSArray * shopList, NSInteger totalCount, NSError *error))block;
++ (void)getShopListWithSortType:(ShopSortType)shopSortType params:(NSDictionary *)params block:(void (^)(id response, NSArray * shopList, NSInteger totalCount, NSError *error))block;
 
 @end

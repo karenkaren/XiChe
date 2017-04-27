@@ -37,4 +37,7 @@
 #pragma mark - Dictionary to Object
 +(id)objectOfClass:(Class)modelClass fromJSON:(NSDictionary *)dict;
 
+#pragma mark - json 字符串
++ (NSString *)jsonStringWithObject:(id)object;
+
 @end

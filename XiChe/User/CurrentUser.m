@@ -73,6 +73,16 @@ static CurrentUser *_currentUser = nil;
                                                       userInfo:nil];
 }
 
+// 上报位置
+- (void)postLocation:(NSDictionary *)params block:(APIResultBlock)block
+{
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kUserLocationUrl params:params methodType:Get autoShowError:NO block:^(id response, NSError *error) {
+        if (block) {
+            block(response, error);
+        }
+    }];
+}
+
 //MJExtensionCodingImplementation
 //- (void)save
 //{

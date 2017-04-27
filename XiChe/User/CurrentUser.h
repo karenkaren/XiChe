@@ -20,6 +20,8 @@
 //退出登陆调用
 - (void)reset;
 // 登录成功
-+(void)loginSuccess:(NSString *)sessionKey;
++ (void)loginSuccess:(NSString *)sessionKey;
+// 上报位置
+- (void)postLocation:(NSDictionary *)params block:(APIResultBlock)block;
 
 @end

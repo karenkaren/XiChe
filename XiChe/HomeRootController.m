@@ -58,7 +58,10 @@
 //处理位置坐标更新
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    [self getHomeDataWithCoordinate:userLocation.location.coordinate];
+    CLLocationCoordinate2D coordinate = userLocation.location. coordinate;
+    [self getHomeDataWithCoordinate:coordinate];
+    NSDictionary * dic = @{@"latitude" : @(coordinate.latitude), @"longitude" : @(coordinate.longitude)};
+    [[CurrentUser mine] postLocation:dic block:nil];
     [_locService stopUserLocationService];
 }
 

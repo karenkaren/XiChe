@@ -59,9 +59,15 @@
     self.preferentialInfoLabel = [self createLabel];
     [self addSubview:self.preferentialInfoLabel];
     
+//    kWeakSelf
     UIButton * appointmentButton = [UIButton createButtonWithTitle:@"预约" color:kLinkColor font:kFont(20) block:^(UIButton *button) {
         DLog(@"开始预约");
+//        kStrongSelf
+//        if (strongSelf.reserveBlock) {
+//            strongSelf.reserveBlock(strongSelf, button);
+//        }
     }];
+    appointmentButton.enabled = NO;
     [self addSubview:appointmentButton];
     
     [self.shopImageView mas_makeConstraints:^(MASConstraintMaker *make) {

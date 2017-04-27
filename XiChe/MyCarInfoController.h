@@ -1,5 +1,5 @@
 //
-//  AddCarInfoController.h
+//  MyCarInfoController.h
 //  XiChe
 //
 //  Created by LiuFeifei on 2017/4/9.
@@ -8,6 +8,6 @@
 
 #import "BaseTableViewController.h"
 
-@interface AddCarInfoController : BaseTableViewController
+@interface MyCarInfoController : BaseTableViewController
 
 @end

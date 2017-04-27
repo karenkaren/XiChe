@@ -27,10 +27,18 @@ NSString * const kUserLoginUrl = @"/user/login/login";
 NSString * const kGetPictureCaptchaUrl = @"/user/register/pictureCode";
 // 退出登录
 NSString * const kUserLogoutUrl = @"/user/login/logout";
+// 上传用户位置
+NSString * const kUserLocationUrl = @"/user/location";
 
 #pragma mark -- 业务服务
 NSString * const kHomepageRecommend = @"/homepage/recommend";   // 首页
-NSString * const kShopLists = @"/shop/lists"; // 洗车店列表
+NSString * const kShopListsDefault = @"/shop/lists"; // 默认洗车店列表
+NSString * const kShopListsWithDistance = @"/shop/lists/distance"; // 根据距离获取店铺列表
+NSString * const kShopProductList = @"/shop/product/list";    // 洗车店内服务
+NSString * const kShopReserveAdd = @"/reserve/add"; // 提交订单
+
+
+
 
 //NSString * const kBannerList = @"/page/banner";
 //// 绑卡

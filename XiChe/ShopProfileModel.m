@@ -8,11 +8,30 @@
 
 #import "ShopProfileModel.h"
 
+@interface ShopProfileModel ()
+
+@property (nonatomic, assign) ShopSortType shopSortType;
+
+@end
+
 @implementation ShopProfileModel
 
-+ (void)getShopList:(NSDictionary *)params block:(void (^)(id, NSArray *, NSInteger, NSError *))block
++ (void)getShopListWithSortType:(ShopSortType)shopSortType params:(NSDictionary *)params block:(void (^)(id, NSArray *, NSInteger, NSError *))block
 {
-    [[NetAPIManager sharedNetAPIManager] requestWithPath:kShopLists params:params methodType:Get block:^(id response, NSError *error) {
+    NSString * path = nil;
+    switch (shopSortType) {
+        case ShopSortTypeOfDefault:
+            path = kShopListsDefault;
+            break;
+        case ShopSortTypeOfDistance:
+            path = kShopListsWithDistance;
+            break;
+        default:
+            path = kShopListsDefault;
+            break;
+    }
+    
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:path params:params methodType:Get block:^(id response, NSError *error) {
         NSArray * shopList = nil;
         NSInteger totalCount = 0;
         if (!error) {

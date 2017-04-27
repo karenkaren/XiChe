@@ -229,4 +229,11 @@
 //    
 //}
 
+#pragma mark - json 字符串
++ (NSString *)jsonStringWithObject:(id)object
+{
+    NSData *data = [NSJSONSerialization dataWithJSONObject:object options:0 error:nil];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
 @end

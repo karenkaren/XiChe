@@ -24,10 +24,16 @@ extern NSString * const kUserRegisterUrl;  // 注册提交
 extern NSString * const kUserLoginUrl; // 登录
 extern NSString * const kGetPictureCaptchaUrl;   // 获取图形验证码
 extern NSString * const kUserLogoutUrl;    // 退出登录
+extern NSString * const kUserLocationUrl;   // 上传用户位置
 
 #pragma mark -- 业务服务
 extern NSString * const kHomepageRecommend; // 首页
-extern NSString * const kShopLists; // 洗车店列表
+extern NSString * const kShopListsDefault; // 洗车店列表
+extern NSString * const kShopListsWithDistance; // 根据距离获取店铺列表
+extern NSString * const kShopProductList;    // 洗车店内服务
+extern NSString * const kShopReserveAdd; // 提交订单
+
+
 
 //extern NSString * const kBannerList;    // banner url
 // 绑卡
