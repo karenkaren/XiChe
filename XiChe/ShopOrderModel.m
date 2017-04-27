@@ -19,10 +19,13 @@
     }
 
     [[NetAPIManager sharedNetAPIManager] customRequestWithPath:kShopReserveAdd params:params body:@{@"reserveProductList" : reserveProductList} methodType:Post autoShowError:YES block:^(id response, NSError *error) {
+        id data = nil;
         if (!error) {
-            
-        } else {
-            
+            BaseDto * dto = [BaseDto mj_objectWithKeyValues:response];
+            data = dto.data;
+        }
+        if (block) {
+            block(response, data, error);
         }
     }];
 }

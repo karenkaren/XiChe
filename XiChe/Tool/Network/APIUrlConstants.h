@@ -33,7 +33,7 @@ extern NSString * const kShopListsWithDistance; // 根据距离获取店铺列�
 extern NSString * const kShopProductList;    // 洗车店内服务
 extern NSString * const kShopReserveAdd; // 提交订单
 extern NSString * const kUserAddCar;     // 添加用户车辆
-
+extern NSString * const kUserCarList;   // 用户车辆列表
 
 //extern NSString * const kBannerList;    // banner url
 // 绑卡

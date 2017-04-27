@@ -214,8 +214,9 @@ static NSString * pathKey(NSString *path, NSDictionary *parameters){
     
     // 封装基础参数
     params = [self configParameters:params.mutableCopy];
+    path = [path stringByAppendingFormat:@"?%@", AFQueryStringFromParameters(params)];
     
-    NSMutableURLRequest * request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString netAbsolutePath:path] parameters:params error:nil];
+    NSMutableURLRequest * request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString netAbsolutePath:path] parameters:nil error:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSString * bodyString = [NSObject jsonStringWithObject:body];

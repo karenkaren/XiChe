@@ -57,9 +57,11 @@
 
 - (void)reserveService
 {
-    NSDictionary * params = @{@"shopId" : @100001, @"shopName" : @"dsfdsfs", @"totalAmount" : @100, @"reserveBegintime" : @"2012-09-09 12:20:00"};
+    NSDictionary * params = @{@"shopId" : @100002, @"shopName" : @"dsfdsfs", @"totalAmount" : @100, @"reserveBegintime" : @"2012-09-09 12:20:00"};
     [ShopOrderModel submitShopOrder:params shopServices:self.shopServices block:^(id response, id data, NSError *error) {
-        
+        if (!error) {
+            [NSObject showMessage:@"订单提交成功"];
+        }
     }];
 }
 

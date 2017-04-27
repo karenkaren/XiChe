@@ -37,7 +37,7 @@ NSString * const kShopListsWithDistance = @"/shop/lists/distance"; // 根据距�
 NSString * const kShopProductList = @"/shop/product/list";    // 洗车店内服务
 NSString * const kShopReserveAdd = @"/reserve/add"; // 提交订单
 NSString * const kUserAddCar = @"/car/add";     // 添加用户车辆
-
+NSString * const kUserCarList = @"/car/list";   // 用户车辆列表
 
 //NSString * const kBannerList = @"/page/banner";
 //// 绑卡

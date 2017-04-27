@@ -19,4 +19,9 @@
     }];
 }
 
++ (void)getCarList:(NSDictionary *)params block:(APIResultDataBlock)block
+{
+//    [NetAPIManager sharedNetAPIManager] requestWithPath:<#(NSString *)#> params:<#(NSDictionary *)#> methodType:<#(NetworkMethod)#> block:<#^(id response, NSError *error)block#>
+}
+
 @end
