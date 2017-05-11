@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) ShopProfileModel * shopProfile;
 //@property (nonatomic, copy) void(^reserveBlock)(ShopProfileCell * cell, UIButton * button);
-- (CGFloat)getAutoCellHeight;
+- (CGFloat)getAutoCellHeightWithShopProfile:(ShopProfileModel *)shopProfile ;
 
 @end

@@ -32,6 +32,7 @@
     self.selectedSegmentIndex = -1;
 
     [self.tableView registerClass:[ShopProfileCell class] forCellReuseIdentifier:kShopProfileCell];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UISegmentedControl * segmented = [[UISegmentedControl alloc] initWithItems:@[@"价格", @"等待时间", @"距离", @"评价"]];
     [segmented addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
@@ -122,9 +123,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ShopProfileCell * cell = (ShopProfileCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    return [cell getAutoCellHeight];
-    return 210;
+    ShopProfileCell * cell = [[ShopProfileCell alloc] init];
+    return [cell getAutoCellHeightWithShopProfile:self.shopList[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

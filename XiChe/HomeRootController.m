@@ -33,6 +33,7 @@
     self.tableView.tableHeaderView = self.homeRootHeaderView;
     
     [self.tableView registerClass:[ShopProfileCell class] forCellReuseIdentifier:@"Cell"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //初始化BMKLocationService
     _locService = [[BMKLocationService alloc]init];
@@ -81,9 +82,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    ShopProfileCell * cell = (ShopProfileCell *)[tableView cellForRowAtIndexPath:indexPath];
-    //    return [cell getAutoCellHeight];
-    return 210;
+    ShopProfileCell * cell = [[ShopProfileCell alloc] init];
+    return [cell getAutoCellHeightWithShopProfile:self.shopList[indexPath.row]];
 }
 
 @end

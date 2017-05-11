@@ -36,28 +36,28 @@
 - (void)addAllSubviews
 {
     self.shopImageView = [[UIImageView alloc] init];
-    [self addSubview:self.shopImageView];
+    [self.contentView addSubview:self.shopImageView];
     
     self.starsView = [[UIView alloc] init];
-    [self addSubview:self.starsView];
+    [self.contentView addSubview:self.starsView];
     
     self.shopNameLabel = [self createLabel];
-    [self addSubview:self.shopNameLabel];
+    [self.contentView addSubview:self.shopNameLabel];
     
     self.shopAddressLabel = [self createLabel];
-    [self addSubview:self.shopAddressLabel];
+    [self.contentView addSubview:self.shopAddressLabel];
     
     self.washingCountLabel = [self createLabel];
-    [self addSubview:self.washingCountLabel];
+    [self.contentView addSubview:self.washingCountLabel];
     
     self.queueingCountLabel = [self createLabel];
-    [self addSubview:self.queueingCountLabel];
+    [self.contentView addSubview:self.queueingCountLabel];
     
     self.waitingTimeLabel = [self createLabel];
-    [self addSubview:self.waitingTimeLabel];
+    [self.contentView addSubview:self.waitingTimeLabel];
     
     self.preferentialInfoLabel = [self createLabel];
-    [self addSubview:self.preferentialInfoLabel];
+    [self.contentView addSubview:self.preferentialInfoLabel];
     
 //    kWeakSelf
     UIButton * appointmentButton = [UIButton createButtonWithTitle:@"预约" color:kLinkColor font:kFont(20) block:^(UIButton *button) {
@@ -68,18 +68,22 @@
 //        }
     }];
     appointmentButton.enabled = NO;
-    [self addSubview:appointmentButton];
+    [self.contentView addSubview:appointmentButton];
+    
+    UIView * lineView = [[UIView alloc] init];
+    lineView.backgroundColor = kLineColor;
+    [self.contentView addSubview:lineView];
     
     [self.shopImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kCommonMargin);
-        make.top.equalTo(self);
+        make.left.equalTo(self.contentView).offset(kCommonMargin);
+        make.top.equalTo(self.contentView).offset(kCommonMargin);
         make.width.height.equalTo(@100);
     }];
     
     [self.shopNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.shopImageView.mas_right).offset(kGeneralSize);
-        make.top.equalTo(self);
-        make.width.equalTo(self).offset(-3 * kCommonMargin);
+        make.top.equalTo(self.contentView).offset(kCommonMargin);
+        make.width.equalTo(self.contentView).offset(-3 * kCommonMargin);
         make.height.greaterThanOrEqualTo(@18);
     }];
     
@@ -97,7 +101,7 @@
     [self.washingCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.shopImageView.mas_bottom).offset(10);
         make.left.equalTo(self.shopImageView);
-        make.width.equalTo(self).offset(-20).multipliedBy(1.0 / 3.0);
+        make.width.equalTo(self.contentView).offset(-20).multipliedBy(1.0 / 3.0);
         make.height.greaterThanOrEqualTo(@18);
     }];
     
@@ -115,17 +119,21 @@
     [self.preferentialInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.washingCountLabel);
         make.top.equalTo(self.washingCountLabel.mas_bottom).offset(10);
-        make.width.equalTo(self).offset(-3 * kCommonMargin - 60);
+        make.width.equalTo(self.contentView).offset(-3 * kCommonMargin - 60);
         make.height.greaterThanOrEqualTo(@18);
     }];
     
     [appointmentButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-kCommonMargin);
+        make.right.equalTo(self.contentView).offset(-kCommonMargin);
         make.top.equalTo(self.preferentialInfoLabel);
         make.height.equalTo(self.preferentialInfoLabel);
         make.width.equalTo(@60);
     }];
-
+    
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.width.equalTo(self.contentView);
+        make.height.equalTo(@(kLineThick));
+    }];
 }
 
 - (UILabel *)createLabel
@@ -137,16 +145,16 @@
     return label;
 }
 
-- (CGFloat)getAutoCellHeight {
+- (CGFloat)getAutoCellHeightWithShopProfile:(ShopProfileModel *)shopProfile {
 
-    [self layoutIfNeeded];
-
+    self.shopProfile = shopProfile;
     /**
      *    self.最底部的控件.frame.origin.y      为自适应cell中的最后一个控件的Y坐标
      *    self.最底部的空间.frame.size.height   为自适应cell中的最后一个控件的高
      *    marginHeight    为自适应cell中的最后一个控件的距离cell底部的间隙
      */
 //    return  self.最底部的控件.frame.origin.y + self.最底部的空间.frame.size.height + marginHeight;
+    DLog(@"%.2f", self.preferentialInfoLabel.bottom + kCommonMargin);
     return  self.preferentialInfoLabel.bottom + kCommonMargin;
 
 }
@@ -164,6 +172,9 @@
     self.waitingTimeLabel.text = [NSString stringWithFormat:@"等待时间:%.1f小时", shopProfile.waitingTime];
 //    self.preferentialInfoLabel.text = shopProfile.preferentialInfo;
     self.preferentialInfoLabel.text = (![NSString isEmpty:shopProfile.preferentialInfo]) ? shopProfile.preferentialInfo : @"周二上午8:00～12:00八折洗车";
+    
+    [self layoutIfNeeded];
+    [self setNeedsLayout];
 }
 
 @end
